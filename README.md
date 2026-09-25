@@ -3,6 +3,8 @@
 A fan recolour of Mitch Ivin's interactive OP-XY, in the pale finish
 of the OP-1, TX-6 and TP-7.
 
+![OP-XY in light aluminium](preview.png)
+
 Original project: [mitchivin/te-opxy](https://github.com/mitchivin/te-opxy)
 by [Mitch Ivin](https://mitchivin.com/). The 3D device, screen, songs and
 controls are his work. I changed only the materials and lighting,
