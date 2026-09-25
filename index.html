@@ -5,7 +5,48 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Teenage Engineering OP-XY | Interactive WebGL Simulation</title>
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%23121417'/><circle cx='50' cy='50' r='25' fill='%23ff3333'/></svg>">
-  <script>document.documentElement.dataset.uiMode = new URLSearchParams(location.search).get('dev') === '1' ? 'dev' : 'live';</script>
+  <script>
+    const params = new URLSearchParams(location.search);
+    document.documentElement.dataset.uiMode = params.get('dev') === '1' ? 'dev' : 'live';
+    const fieldEdition = params.get('theme') !== 'original';
+    document.documentElement.dataset.theme = fieldEdition ? 'field' : 'original';
+    if (fieldEdition) {
+      globalThis.__RENDER_PARAMS__ = {
+        finishes: {
+          key: { color: '#ddd6ca' },
+          controlTile: { color: '#dcd5c9', roughness: .66, metalness: .06, envMapIntensity: .8, grain: .45 },
+          encoderBody: { color: '#d9d2c6', roughness: .58, metalness: .16, envMapIntensity: .86 },
+          encoderGrip: { color: '#ded7cb', roughness: .72, metalness: .04, emissive: '#000000', emissiveIntensity: 0, grain: .35 },
+          encoderCap: { color: '#ddd6ca', roughness: .62, metalness: .12, envMapIntensity: .9 },
+          volumeCap: { color: '#ddd6ca', roughness: .62, metalness: .12, envMapIntensity: .9 },
+          chassis: { color: '#858a8d', roughness: .38, metalness: .74, envMapIntensity: 1.05, grain: .45 },
+          ioPanel: { color: '#ddd6ca', roughness: .88, metalness: .08, envMapIntensity: .82 },
+          underside: { color: '#dcd5c9', roughness: .72, metalness: .16 },
+          displaySurround: { color: '#202326' },
+          emblem: { color: '#f1eee7', roughness: .1, metalness: .1, envMapIntensity: 1.2, clearcoat: 1, clearcoatRoughness: .04 }
+        },
+        lighting: {
+          ambient: { intensity: .24 },
+          key: { intensity: 5, position: [175, 150, 45], shadowBias: -1e-5, shadowNormalBias: .004 },
+          strip: { intensity: 1.2, position: [135, 105, 65], target: [0, 0, 0] },
+          fill: { intensity: .004, position: [150, 55, 110] },
+          connectorFill: { intensity: .012 },
+          rim: { intensity: .045, position: [-145, 100, -125] },
+          underBounce: { intensity: 2.2 }
+        },
+        environment: {
+          backdrop: '#e2dfd7',
+          ceiling: { stops: ['#fffefa', '#f0eee8', '#e2dfd7'] },
+          softbox: { stops: ['#fffefa', '#e8e4db'] },
+          bounceCard: { stops: ['#c8c6c0', '#e2dfd7'] },
+          underBounce: { sky: '#e2dfd7', ground: '#f0eee8' }
+        },
+        post: {
+          bloom: { strength: 0, radius: 0, threshold: 3.5 }
+        }
+      };
+    }
+  </script>
   <script type="module" crossorigin src="./assets/index-j7m8nt8v.js"></script>
   <link rel="stylesheet" crossorigin href="./assets/index-CUwIxhJF.css">
 </head>
@@ -38,6 +79,7 @@
       </nav>
     </div>
     <p class="song-status"><span id="beat-status" role="status"></span><span id="song-status" role="status"></span></p>
+    <button id="btn-theme-toggle" class="theme-toggle" type="button" aria-label="Toggle light/dark finish">light / dark</button>
     <div class="project-links">
       <button class="project-links-toggle" type="button" aria-label="About this project" aria-expanded="false" aria-controls="project-links-menu">
         <span class="project-links-icon" aria-hidden="true"></span>
@@ -75,6 +117,15 @@
     </nav>
     <button id="btn-camera-tour" class="camera-tour-toggle" type="button" aria-pressed="false" title="Start a guided orbit around the device">tour</button>
   </footer>
+
+  <script>
+    const themeToggle = document.getElementById('btn-theme-toggle');
+    themeToggle.addEventListener('click', () => {
+      const next = new URL(location.href);
+      next.searchParams.set('theme', fieldEdition ? 'original' : 'field');
+      location.href = next.href;
+    });
+  </script>
 
 </body>
 </html>

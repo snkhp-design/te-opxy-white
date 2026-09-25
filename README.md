@@ -1,37 +1,19 @@
-# Teenage Engineering OP-XY
+# OP-XY Field Edition
 
-An interactive browser interpretation of the Teenage Engineering OP-XY. Explore the device, play its controls, and build or play featured tracks.
+An unofficial, personal visual concept that gives the published OP-XY browser simulation a warm off-white finish inspired by the OP-1 field. The encoder islands, encoder hardware, speaker panel, underside and feet use warm off-white plastic; the outer frame is textured light aluminum; the underside emblem is glossy white, and underside print and button symbols are dark gray. The speaker grille perforations have dark interior walls and backing. A strong top-right key light and reduced fill create deeper shadows and higher contrast; the device halo is disabled. The interactive 3D device, screen, songs, and controls are inherited from the original demo.
 
-**[Open live demo](https://mitchivin.github.io/te-opxy/)**
+## Run locally
 
-Works on desktop and phone. Open the live demo and interact with the device.
+This is a static site. From this folder, run:
 
-![OP-XY device during a track build](assets/reference/te-opxy-3d.png)
+```sh
+python3 -m http.server 8000
+```
 
-## Features
+Open `http://localhost:8000/`. The light finish loads by default; use **light / dark** to switch finishes.
 
-- **Playable device.** Use the keys, buttons, and encoders directly.
-- **On-device display.** Screen pages and feedback respond to your actions.
-- **Featured tracks.** Choose a song to build or play on the device.
-- **Your own project.** Create and return to your own patterns.
-- **Camera views.** Explore the hardware from different angles.
+## Credit
 
-![Close view of the OP-XY screen and controls](assets/reference/te-opxy-screen.png)
+Based on the published web build of [Mitch Ivin's OP-XY demo](https://github.com/mitchivin/te-opxy). Its repository states that the original application source is not published. This concept adjusts the existing renderer's material and environment settings while preserving the shipped interaction code.
 
-## Get started
-
-1. Open the [OP-XY live demo](https://mitchivin.github.io/te-opxy/).
-2. Choose Build or Play for a featured track, or use the device to make your own project.
-3. Interact with the hardware controls and switch views to explore.
-
-This repository contains public product information. The original application source is not published here.
-
-## Related
-
-- [MiPod Classic](https://github.com/mitchivin/mipod)
-- [Mi Boy Color](https://github.com/mitchivin/miboy)
-- [MitchIvin XP](https://mitchivin.com/)
-
-## About
-
-Built by [Mitch Ivin](https://mitchivin.com/). This is an independent creative project inspired by the Teenage Engineering OP-XY and is not affiliated with Teenage Engineering.
+Teenage Engineering, OP-XY, and OP-1 field are trademarks of Teenage Engineering. This is an unofficial fan-made concept and is not affiliated with or endorsed by Teenage Engineering or Mitch Ivin. Please credit the original demo when sharing screenshots.
